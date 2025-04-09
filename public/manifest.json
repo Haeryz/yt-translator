@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Live Chat Translator",
+  "version": "1.0.0",
+  "description": "Automatically translates YouTube live chat messages using Azure Translator API",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://www.youtube.com/*", "https://api.cognitive.microsofttranslator.com/*"],
+  "action": {
+    "default_popup": "simple-popup.html",
+    "default_title": "YT Chat Translator"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "options_page": "simple-options.html",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["_next/*", "*.js"],
+      "matches": ["https://www.youtube.com/*"]
+    }
+  ]
+} 
